@@ -32,6 +32,12 @@ def record_current_answer(answer, current_question_id, session):
     '''
     Validates and stores the answer for the current question to django session.
     '''
+     if not answer:
+        return False, "Answer cannot be empty."
+    
+    session_key = f"question_{current_question_id}_answer"
+    session[session_key] = answer
+    session.modified = True
     return True, ""
 
 
