@@ -39,8 +39,22 @@ def get_next_question(current_question_id):
     '''
     Fetches the next question from the PYTHON_QUESTION_LIST based on the current_question_id.
     '''
+     PYTHON_QUESTION_LIST = [
+        "What is the capital of France?",
+        "Who wrote 'Romeo and Juliet'?",
+        "What is the square root of 64?",
+       
+    ]
+    
+    
+    if 0 <= current_question_id < len(PYTHON_QUESTION_LIST):
+        next_question_id = current_question_id + 1
+        return PYTHON_QUESTION_LIST[current_question_id], next_question_id
+    else:
+        
+        return "dummy questions ", -1
 
-    return "dummy question", -1
+   
 
 
 def generate_final_response(session):
