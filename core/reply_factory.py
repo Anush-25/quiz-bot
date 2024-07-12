@@ -48,5 +48,18 @@ def generate_final_response(session):
     Creates a final result message including a score based on the answers
     by the user for questions in the PYTHON_QUESTION_LIST.
     '''
-
+     question_1_answer = session.get("question_1_answer", "").lower()
+    question_2_answer = session.get("question_2_answer", "").lower()
+    
+    correct_answers = {
+        1: "paris",
+        2: "shakespeare",
+       
+    }
+    
+    total_questions = len(correct_answers)
+    correct_count = sum(1 for q_id, correct_ans in correct_answers.items() if question_1_answer == correct_ans)
+    
+    score_percentage = (correct_count / total_questions) * 100
+    result_message = f"Your score: {correct_count}/{total_questions} ({score_percentage:.2f}%)."
     return "dummy result"
